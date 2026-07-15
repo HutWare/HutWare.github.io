@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portofolio — Farhan</title>
+  <meta name="description" content="Portofolio desain UI/UX dan web development." />
+  <style>
+    :root{
+      --bg:#0e1116; --surface:#161b22; --surface-2:#1c2230;
+      --text:#e6edf3; --text-muted:#9aa7b4; --accent:#5b9dff;
+      --border:#232b36; --radius:16px; --max:1080px;
+      --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    :root[data-theme="light"]{
+      --bg:#f7f9fc; --surface:#ffffff; --surface-2:#eef2f8;
+      --text:#111826; --text-muted:#5a6675; --accent:#2563eb; --border:#e2e8f0;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+    section{padding:72px 0}
+
+    /* NAV */
+    header{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);
+      background:color-mix(in srgb,var(--bg) 82%,transparent);border-bottom:1px solid var(--border)}
+    nav{display:flex;align-items:center;justify-content:space-between;height:62px}
+    .logo{font-weight:800;letter-spacing:-.02em;font-size:18px}
+    .logo span{color:var(--accent)}
+    .nav-links{display:flex;gap:26px;align-items:center}
+    .nav-links a{color:var(--text-muted);font-size:14px;font-weight:500;transition:color .2s}
+    .nav-links a:hover{color:var(--text)}
+    .theme-btn{background:var(--surface-2);border:1px solid var(--border);color:var(--text);
+      width:38px;height:38px;border-radius:10px;cursor:pointer;font-size:16px}
+    @media(max-width:640px){.nav-links a:not(.theme-wrap){display:none}}
+
+    /* HERO */
+    .hero{padding:96px 0 64px}
+    .badge{display:inline-block;background:var(--surface-2);border:1px solid var(--border);
+      color:var(--text-muted);font-size:13px;padding:6px 14px;border-radius:999px;margin-bottom:22px}
+    .hero h1{font-size:clamp(34px,6vw,58px);line-height:1.05;letter-spacing:-.03em;font-weight:800;margin-bottom:18px}
+    .hero h1 em{font-style:normal;color:var(--accent)}
+    .hero p{font-size:clamp(16px,2.4vw,20px);color:var(--text-muted);max-width:600px;margin-bottom:30px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{padding:12px 22px;border-radius:12px;font-weight:600;font-size:15px;border:1px solid var(--border);transition:transform .15s,background .2s}
+    .btn:hover{transform:translateY(-2px)}
+    .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .btn.ghost{background:var(--surface)}
+
+    /* SECTION HEADING */
+    .head{margin-bottom:36px}
+    .head .eyebrow{color:var(--accent);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+    .head h2{font-size:clamp(26px,4vw,38px);letter-spacing:-.02em;margin-top:6px;font-weight:800}
+    .head p{color:var(--text-muted);margin-top:8px;max-width:620px}
+
+    /* DESIGN GRID */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;
+      display:flex;flex-direction:column;transition:transform .2s,border-color .2s}
+    .card:hover{transform:translateY(-4px);border-color:var(--accent)}
+    .frame{aspect-ratio:4/3;background:var(--surface-2);border:0;width:100%;display:block}
+    .card-body{padding:18px 20px}
+    .card-body h3{font-size:17px;font-weight:700;margin-bottom:4px}
+    .tag{display:inline-block;font-size:12px;color:var(--text-muted);background:var(--surface-2);
+      border:1px solid var(--border);padding:3px 10px;border-radius:999px;margin-top:10px}
+    .card-body a.open{display:inline-flex;align-items:center;gap:6px;margin-top:14px;color:var(--accent);font-weight:600;font-size:14px}
+
+    /* DEV */
+    .dev{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:34px;
+      display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center}
+    @media(max-width:720px){.dev{grid-template-columns:1fr}}
+    .dev h3{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
+    .dev p{color:var(--text-muted);margin-bottom:16px}
+    .stack{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{font-size:13px;background:var(--surface-2);border:1px solid var(--border);padding:5px 12px;border-radius:8px}
+    .dev-visual{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:30px;text-align:center;font-size:52px}
+
+    /* CONTACT */
+    .contact{text-align:center}
+    .contact h2{font-size:clamp(28px,5vw,42px);font-weight:800;letter-spacing:-.02em;margin-bottom:12px}
+    .contact p{color:var(--text-muted);margin-bottom:24px}
+    footer{border-top:1px solid var(--border);padding:28px 0;text-align:center;color:var(--text-muted);font-size:14px}
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="wrap">
+      <nav>
+        <div class="logo">Farhan<span>.</span></div>
+        <div class="nav-links">
+          <a href="#design">Design</a>
+          <a href="#dev">Development</a>
+          <a href="#contact">Kontak</a>
+          <button class="theme-btn" id="themeBtn" aria-label="Ganti tema">🌙</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero wrap">
+    <span class="badge">👋 Mahasiswa — Desain & Web Development</span>
+    <h1>Saya merancang <em>antarmuka</em><br/>dan membangunnya jadi <em>web</em>.</h1>
+    <p>Menggabungkan desain UI/UX (Figma) dengan pengembangan web (Laravel).
+       Berikut sebagian karya yang saya kerjakan.</p>
+    <div class="cta">
+      <a href="#design" class="btn primary">Lihat Karya Desain</a>
+      <a href="#dev" class="btn ghost">Project Development</a>
+    </div>
+  </section>
+
+  <!-- DESIGN -->
+  <section id="design" class="wrap">
+    <div class="head">
+      <div class="eyebrow">Design Work</div>
+      <h2>Karya Figma</h2>
+      <p>Rancangan UI/UX — dari eksplorasi hingga prototype hi-fidelity. Klik "Buka di Figma" untuk versi penuh.</p>
+    </div>
+
+    <div class="grid">
+
+      <!-- 1. Movix -->
+      <article class="card">
+        <iframe class="frame" loading="lazy" title="Movix.com"
+          src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2F4ZLQqCcBa24Rh4iu0sEtCS%2FMovix.com"></iframe>
+        <div class="card-body">
+          <h3>Movix.com</h3>
+          <div class="tag">UI Design</div>
+          <a class="open" target="_blank" rel="noopener"
+             href="https://www.figma.com/design/4ZLQqCcBa24Rh4iu0sEtCS/Movix.com">Buka di Figma →</a>
+        </div>
+      </article>
+
+      <!-- 2. Tugas IMK -->
+      <article class="card">
+        <iframe class="frame" loading="lazy" title="Tugas IMK"
+          src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FbxjR4T6GtGJ36i15fWVWyV%2FTugas-IMK"></iframe>
+        <div class="card-body">
+          <h3>Tugas IMK</h3>
+          <div class="tag">Interaksi Manusia Komputer</div>
+          <a class="open" target="_blank" rel="noopener"
+             href="https://www.figma.com/design/bxjR4T6GtGJ36i15fWVWyV/Tugas-IMK">Buka di Figma →</a>
+        </div>
+      </article>
+
+      <!-- 3. High-Fidelity MUC -->
+      <article class="card">
+        <iframe class="frame" loading="lazy" title="High-Fidelity MUC"
+          src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2F2dkDkm6G4bdMBEZyhCyAI3%2FHigh-Fidelity-MUC"></iframe>
+        <div class="card-body">
+          <h3>High-Fidelity MUC</h3>
+          <div class="tag">Hi-Fi Mockup</div>
+          <a class="open" target="_blank" rel="noopener"
+             href="https://www.figma.com/design/2dkDkm6G4bdMBEZyhCyAI3/High-Fidelity-MUC">Buka di Figma →</a>
+        </div>
+      </article>
+
+      <!-- 4. Coba Serba Serbi -->
+      <article class="card">
+        <iframe class="frame" loading="lazy" title="Coba Serba Serbi"
+          src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2F6GhZDBl8v3Fr37LaSRJjLN%2FCoba-Serba-Serbi"></iframe>
+        <div class="card-body">
+          <h3>Coba Serba Serbi</h3>
+          <div class="tag">Eksplorasi</div>
+          <a class="open" target="_blank" rel="noopener"
+             href="https://www.figma.com/design/6GhZDBl8v3Fr37LaSRJjLN/Coba-Serba-Serbi">Buka di Figma →</a>
+        </div>
+      </article>
+
+      <!-- 5. Prototype -->
+      <article class="card">
+        <iframe class="frame" loading="lazy" title="Prototype Interaktif"
+          src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2F4uDOpm1eYpnrS9DiDd4pw1%3Fnode-id%3D0-1"></iframe>
+        <div class="card-body">
+          <h3>Prototype Interaktif</h3>
+          <div class="tag">Clickable Prototype</div>
+          <a class="open" target="_blank" rel="noopener"
+             href="https://www.figma.com/proto/4uDOpm1eYpnrS9DiDd4pw1?node-id=0-1">Buka di Figma →</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- DEVELOPMENT -->
+  <section id="dev" class="wrap">
+    <div class="head">
+      <div class="eyebrow">Development</div>
+      <h2>Project Web</h2>
+      <p>Bukan cuma desain — saya juga membangunnya jadi aplikasi nyata.</p>
+    </div>
+
+    <div class="dev">
+      <div>
+        <h3>Posko Jenggala</h3>
+        <p>Website gerakan kemanusiaan Posko Jenggala. Dibangun dari nol dengan Laravel,
+           lengkap dengan panel admin dan database.</p>
+        <div class="stack">
+          <span class="chip">Laravel 11</span>
+          <span class="chip">PHP 8.2</span>
+          <span class="chip">Blade</span>
+          <span class="chip">SQLite</span>
+        </div>
+        <!-- Ganti # dengan URL live setelah di-deploy -->
+        <a class="btn primary" style="margin-top:18px;display:inline-block" href="#" target="_blank" rel="noopener">Lihat Live Site →</a>
+      </div>
+      <div class="dev-visual">🤝</div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact wrap">
+    <h2>Mari berkolaborasi</h2>
+    <p>Terbuka untuk project desain maupun web development.</p>
+    <a href="mailto:farhanyu6@gmail.com" class="btn primary">farhanyu6@gmail.com</a>
+  </section>
+
+  <footer>
+    <div class="wrap">© 2026 Farhan — Dibuat dengan HTML, CSS & sedikit kopi ☕</div>
+  </footer>
+
+  <script>
+    const btn = document.getElementById('themeBtn');
+    const root = document.documentElement;
+    btn.addEventListener('click', () => {
+      const light = root.getAttribute('data-theme') === 'light';
+      root.setAttribute('data-theme', light ? 'dark' : 'light');
+      btn.textContent = light ? '🌙' : '☀️';
+    });
+  </script>
+
+</body>
+</html>
