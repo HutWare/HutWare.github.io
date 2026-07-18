@@ -5,405 +5,267 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>M Farhan Fahrezi — UI/UX Designer & Web Developer</title>
   <meta name="description" content="Portfolio of M Farhan Fahrezi — UI/UX design in Figma and web development with Laravel. Open to opportunities and collaboration." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f14'/%3E%3Ctext x='30' y='45' font-family='Arial' font-weight='800' font-size='38' fill='%23e8edf2' text-anchor='middle'%3EF%3Ctspan fill='%234f8ef7'%3E.%3C/tspan%3E%3C/text%3E%3C/svg%3E" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
-    :root{
-      --bg:#0b0f14; --surface:#11161d; --surface-2:#171e27;
-      --text:#e8edf2; --text-muted:#98a4b1; --accent:#4f8ef7; --accent-strong:#3b7ae4;
-      --border:#1f2833; --radius:14px; --max:1080px;
-      --font:"Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    }
-    :root[data-theme="light"]{
-      --bg:#fafbfd; --surface:#ffffff; --surface-2:#f0f3f8;
-      --text:#101828; --text-muted:#51606f; --accent:#2563eb; --accent-strong:#1d4fd7;
-      --border:#e4e9f0;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#0b0f14;--surface:#11161d;--surface-2:#171e27;--text:#e8edf2;--muted:#98a4b1;--accent:#4f8ef7;--accent-strong:#3b7ae4;--border:#1f2833}
+    :root[data-theme="light"]{--bg:#fafbfd;--surface:#ffffff;--surface-2:#f0f3f8;--text:#101828;--muted:#51606f;--border:#e4e9f0}
     html{scroll-behavior:smooth}
-    body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .25s,color .25s}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-    .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
-    section{padding:78px 0}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .25s,color .25s}
+    a{color:var(--accent);text-decoration:none}
+    ::selection{background:var(--accent);color:#fff}
+    img{max-width:100%}
 
-    /* Scroll-reveal (JS adds .visible; motion respects user preference) */
+    .nl{color:var(--muted);font-size:14px;font-weight:500;transition:color .2s}
+    .nl:hover{color:var(--text)}
+    .btn-p{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:11px;font-weight:600;font-size:15px;background:var(--accent);color:#fff;border:1px solid var(--accent);transition:transform .15s,background .2s}
+    .btn-p:hover{transform:translateY(-2px);background:var(--accent-strong);color:#fff}
+    .btn-g{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:11px;font-weight:600;font-size:15px;background:var(--surface-2);color:var(--text);border:1px solid var(--border);transition:transform .15s,border-color .2s}
+    .btn-g:hover{transform:translateY(-2px);border-color:var(--accent);color:var(--text)}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,border-color .2s}
+    .card:hover{transform:translateY(-4px);border-color:var(--accent)}
+    .ctl{background:var(--surface-2);border:1px solid var(--border);color:var(--text);padding:8px 14px;border-radius:10px;cursor:pointer;font:600 12.5px Inter,sans-serif;white-space:nowrap;transition:border-color .2s}
+    .ctl:hover{border-color:var(--accent)}
+
     [data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
     [data-reveal].visible{opacity:1;transform:none}
-    @media (prefers-reduced-motion: reduce){
-      html{scroll-behavior:auto}
-      [data-reveal]{opacity:1;transform:none;transition:none}
-    }
-
-    /* NAV */
-    header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
-      background:color-mix(in srgb,var(--bg) 85%,transparent);border-bottom:1px solid var(--border)}
-    nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-    .logo{font-weight:800;letter-spacing:-.02em;font-size:17px}
-    .logo span{color:var(--accent)}
-    .nav-links{display:flex;gap:26px;align-items:center}
-    .nav-links a{color:var(--text-muted);font-size:14px;font-weight:500;transition:color .2s;position:relative}
-    .nav-links a:hover{color:var(--text)}
-    .nav-links a.active{color:var(--accent);font-weight:600}
-    .nav-actions{display:flex;gap:10px;align-items:center}
-    .icon-btn{background:var(--surface-2);border:1px solid var(--border);color:var(--text);
-      width:38px;height:38px;border-radius:10px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
-    .icon-btn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-    .menu-btn{display:none}
-    @media(max-width:680px){
-      .menu-btn{display:inline-flex}
-      .nav-links{position:absolute;top:64px;left:0;right:0;flex-direction:column;align-items:flex-start;
-        gap:0;background:var(--surface);border-bottom:1px solid var(--border);display:none}
-      .nav-links.open{display:flex}
-      .nav-links a{width:100%;padding:15px 22px;border-top:1px solid var(--border);font-size:15px}
-    }
-
-    /* HERO */
-    .hero{padding:88px 0 70px}
-    .hero-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:48px;align-items:center}
-    @media(max-width:760px){.hero-grid{grid-template-columns:1fr}}
-    .badge{display:inline-flex;align-items:center;gap:8px;background:var(--surface-2);border:1px solid var(--border);
-      color:var(--text-muted);font-size:13px;font-weight:500;padding:7px 15px;border-radius:999px;margin-bottom:22px}
-    .badge::before{content:"";width:8px;height:8px;border-radius:50%;background:#34c47c}
-    .hero h1{font-size:clamp(32px,5.4vw,52px);line-height:1.08;letter-spacing:-.03em;font-weight:800;margin-bottom:18px}
-    .hero h1 em{font-style:normal;color:var(--accent)}
-    .hero .lede{font-size:clamp(16px,2.2vw,18px);color:var(--text-muted);max-width:560px;margin-bottom:30px}
-    .cta{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:11px;font-weight:600;font-size:15px;
-      border:1px solid var(--border);transition:transform .15s,background .2s,border-color .2s;cursor:pointer}
-    .btn:hover{transform:translateY(-2px)}
-    .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
-    .btn.primary:hover{background:var(--accent-strong)}
-    .btn.ghost{background:var(--surface)}
-
-    /* Photo card */
-    .photo{position:relative;width:min(300px,80%);aspect-ratio:4/5;margin-left:auto;border-radius:20px;overflow:hidden;
-      border:1px solid var(--border);background:var(--surface-2)}
-    @media(max-width:760px){.photo{margin:0 auto}}
-    .photo .monogram{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-      font-size:64px;font-weight:800;letter-spacing:-.04em;color:var(--text-muted)}
-    .photo img{position:relative;width:100%;height:100%;object-fit:cover}
-    .photo::after{content:"";position:absolute;inset:0;border-radius:20px;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--text) 8%,transparent)}
-
-    /* SECTION HEADING */
-    .head{margin-bottom:38px}
-    .head .eyebrow{color:var(--accent);font-weight:700;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase}
-    .head h2{font-size:clamp(25px,3.8vw,36px);letter-spacing:-.02em;margin-top:6px;font-weight:800}
-    .head p{color:var(--text-muted);margin-top:8px;max-width:620px}
-
-    /* CAPABILITIES */
-    .caps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
-    .cap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
-    .cap .cap-icon{width:40px;height:40px;border-radius:10px;background:var(--surface-2);border:1px solid var(--border);
-      display:flex;align-items:center;justify-content:center;margin-bottom:14px}
-    .cap .cap-icon svg{width:19px;height:19px;fill:none;stroke:var(--accent);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-    .cap h3{font-size:16.5px;font-weight:700;margin-bottom:6px}
-    .cap p{font-size:14px;color:var(--text-muted)}
-
-    /* DESIGN GRID */
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
-    .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;
-      display:flex;flex-direction:column;transition:transform .2s,border-color .2s}
-    .card:hover{transform:translateY(-4px);border-color:var(--accent)}
-    .frame{aspect-ratio:4/3;background:var(--surface-2);border:0;width:100%;display:block}
-    .card-body{padding:18px 20px}
-    .card-body h3{font-size:16.5px;font-weight:700;margin-bottom:4px}
-    .tag{display:inline-block;font-size:12px;color:var(--text-muted);background:var(--surface-2);
-      border:1px solid var(--border);padding:3px 10px;border-radius:999px;margin-top:10px}
-    .card-body a.open{display:inline-flex;align-items:center;gap:6px;margin-top:14px;color:var(--accent);font-weight:600;font-size:14px}
-
-    /* DEVELOPMENT */
-    .dev{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:34px;
-      display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center}
-    @media(max-width:720px){.dev{grid-template-columns:1fr}}
-    .dev h3{font-size:23px;font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
-    .dev p{color:var(--text-muted);margin-bottom:16px}
-    .stack{display:flex;flex-wrap:wrap;gap:8px}
-    .chip{font-size:13px;background:var(--surface-2);border:1px solid var(--border);padding:5px 12px;border-radius:8px}
-    .dev-visual{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:28px;
-      display:flex;align-items:center;justify-content:center}
-    .dev-visual svg{width:76px;height:76px;fill:none;stroke:var(--accent);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
-    .dev + .dev{margin-top:22px}
-    .dev-visual.poster{padding:0;overflow:hidden;align-self:stretch;max-height:340px}
-    .dev-visual.poster img{width:100%;height:100%;object-fit:cover;object-position:top}
-
-    /* CONTACT */
-    .contact-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
-      padding:52px 34px;text-align:center}
-    .contact-card h2{font-size:clamp(26px,4.4vw,38px);font-weight:800;letter-spacing:-.02em;margin-bottom:12px}
-    .contact-card p{color:var(--text-muted);max-width:520px;margin:0 auto 26px}
-    .contact-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-
-    footer{border-top:1px solid var(--border);padding:28px 0;text-align:center;color:var(--text-muted);font-size:14px}
+    @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}[data-reveal]{opacity:1;transform:none;transition:none}}
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="wrap">
-      <nav>
-        <a class="logo" href="#top">Farhan F<span>.</span></a>
-        <div class="nav-links" id="navLinks">
-          <a href="#capabilities">What I Do</a>
-          <a href="#design">Design</a>
-          <a href="#dev">Development</a>
-          <a href="#contact">Contact</a>
-        </div>
-        <div class="nav-actions">
-          <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">
-            <svg id="themeIcon" viewBox="0 0 24 24"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3 6.6 6.6 0 0 0 21 12.8Z"/></svg>
-          </button>
-          <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
-            <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-          </button>
-        </div>
-      </nav>
+<header style="position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:color-mix(in srgb,var(--bg) 85%,transparent);border-bottom:1px solid var(--border)">
+  <nav style="max-width:1080px;margin:0 auto;padding:0 22px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+    <a href="#top" style="font-weight:800;letter-spacing:-0.02em;font-size:17px;color:var(--text)">Farhan F<span style="color:var(--accent)">.</span></a>
+    <div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap;justify-content:flex-end">
+      <a class="nl" href="#capabilities">What I Do</a>
+      <a class="nl" href="#design">Design</a>
+      <a class="nl" href="#dev">Development</a>
+      <a class="nl" href="#contact">Contact</a>
+      <button class="ctl" id="themeBtn" aria-label="Toggle theme">◐ Light</button>
     </div>
-  </header>
+  </nav>
+</header>
 
-  <!-- HERO -->
-  <section class="hero wrap" id="top">
-    <div class="hero-grid">
-      <div>
-        <span class="badge">Open to opportunities</span>
-        <h1>Designing <em>interfaces</em>,<br/>building them for the <em>web</em>.</h1>
-        <p class="lede">
-          I'm <strong>M&nbsp;Farhan&nbsp;Fahrezi</strong>, an Informatics fresh graduate.
-          I design user interfaces in Figma and turn them into working web applications
-          with Laravel — and I'd love to do both on your team.
-        </p>
-        <div class="cta">
-          <a href="#design" class="btn primary">View my work</a>
-          <a href="#contact" class="btn ghost">Get in touch</a>
-        </div>
-      </div>
-      <div class="photo" data-reveal>
-        <div class="monogram">MF</div>
-        <img src="assets/profile.jpg" alt="Portrait of M Farhan Fahrezi"
-             onerror="this.style.display='none'" />
+<!-- HERO -->
+<section id="top" style="position:relative">
+  <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(52% 46% at 72% 10%,color-mix(in srgb,var(--accent) 10%,transparent),transparent 70%);pointer-events:none"></div>
+  <div style="position:relative;max-width:1080px;margin:0 auto;padding:84px 22px 70px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:52px;align-items:center">
+    <div>
+      <span style="display:inline-flex;align-items:center;gap:8px;background:var(--surface-2);border:1px solid var(--border);color:var(--muted);font-size:13px;font-weight:500;padding:7px 15px;border-radius:999px;margin-bottom:22px"><span style="width:8px;height:8px;border-radius:50%;background:#34c47c;display:inline-block"></span>Open to opportunities</span>
+      <h1 style="font-size:clamp(32px,5.4vw,52px);line-height:1.08;letter-spacing:-0.03em;font-weight:800;margin:0 0 18px">Designing <em style="font-style:normal;color:var(--accent)">interfaces</em>,<br>building them for the <em style="font-style:normal;color:var(--accent)">web</em>.</h1>
+      <p style="font-size:clamp(16px,2.2vw,18px);color:var(--muted);max-width:560px;margin:0 0 30px;text-wrap:pretty">I'm <strong style="color:var(--text)">M&nbsp;Farhan&nbsp;Fahrezi</strong>, an Informatics fresh graduate. I design user interfaces in Figma and turn them into working web applications with Laravel — and I'd love to do both on your team.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="#design" class="btn-p">View my work</a>
+        <a href="#contact" class="btn-g" style="background:var(--surface)">Get in touch</a>
       </div>
     </div>
-  </section>
-
-  <!-- CAPABILITIES -->
-  <section id="capabilities" class="wrap">
-    <div class="head" data-reveal>
-      <div class="eyebrow">What I Do</div>
-      <h2>From idea to interface to implementation</h2>
-      <p>One person who can carry a product through design and into code.</p>
-    </div>
-    <div class="caps">
-      <div class="cap" data-reveal>
-        <div class="cap-icon"><svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></div>
-        <h3>UI/UX Design</h3>
-        <p>Wireframes to high-fidelity mockups and clickable prototypes in Figma, grounded in Human–Computer Interaction principles.</p>
-      </div>
-      <div class="cap" data-reveal>
-        <div class="cap-icon"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
-        <h3>Front-End Development</h3>
-        <p>Clean, responsive layouts with semantic HTML, modern CSS, and vanilla JavaScript — this site included.</p>
-      </div>
-      <div class="cap" data-reveal>
-        <div class="cap-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
-        <h3>Back-End Development</h3>
-        <p>Web applications and REST APIs with Laravel/PHP and Java Spring Boot — databases, integrations, and admin panels.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- DESIGN -->
-  <section id="design" class="wrap">
-    <div class="head" data-reveal>
-      <div class="eyebrow">Design Work</div>
-      <h2>Selected Figma projects</h2>
-      <p>UI/UX work from exploration to high-fidelity prototypes. Open any file in Figma for the full detail.</p>
-    </div>
-
-    <div class="grid">
-
-      <article class="card" data-reveal>
-        <iframe class="frame" loading="lazy" title="Movix.com"
-          src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2F4ZLQqCcBa24Rh4iu0sEtCS%2FMovix.com"></iframe>
-        <div class="card-body">
-          <h3>Movix.com</h3>
-          <div class="tag">Software Engineering Coursework</div>
-          <a class="open" target="_blank" rel="noopener"
-             href="https://www.figma.com/design/4ZLQqCcBa24Rh4iu0sEtCS/Movix.com">Open in Figma →</a>
+    <div style="position:relative;max-width:400px;width:100%;margin:0 auto">
+      <div style="position:relative;border:1px solid var(--border);border-radius:22px;background:linear-gradient(180deg,var(--surface),var(--surface-2));overflow:hidden;aspect-ratio:1/1.02;display:flex;align-items:flex-end;justify-content:center">
+        <div aria-hidden="true" style="position:absolute;inset:0;background-image:radial-gradient(circle,color-mix(in srgb,var(--text) 13%,transparent) 1px,transparent 1.4px);background-size:20px 20px"></div>
+        <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(64% 54% at 50% 28%,color-mix(in srgb,var(--accent) 30%,transparent),transparent 72%)"></div>
+        <img src="assets/photo-duotone.png" alt="Portrait of M Farhan Fahrezi" style="position:relative;width:92%;display:block;filter:drop-shadow(0 24px 48px rgba(0,0,0,.45))">
+        <div style="position:absolute;bottom:14px;left:14px;right:14px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-radius:13px;background:color-mix(in srgb,var(--bg) 74%,transparent);backdrop-filter:blur(10px);border:1px solid color-mix(in srgb,var(--border) 70%,transparent)">
+          <strong style="font-weight:700;font-size:14.5px;letter-spacing:-0.01em">M Farhan Fahrezi</strong>
+          <span style="font-size:11.5px;font-weight:500;color:var(--muted);text-align:right">UI/UX &amp; Web Developer</span>
         </div>
-      </article>
-
-      <article class="card" data-reveal>
-        <iframe class="frame" loading="lazy" title="HCI Coursework"
-          src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FbxjR4T6GtGJ36i15fWVWyV%2FTugas-IMK"></iframe>
-        <div class="card-body">
-          <h3>HCI Coursework</h3>
-          <div class="tag">Human–Computer Interaction</div>
-          <a class="open" target="_blank" rel="noopener"
-             href="https://www.figma.com/design/bxjR4T6GtGJ36i15fWVWyV/Tugas-IMK">Open in Figma →</a>
-        </div>
-      </article>
-
-      <article class="card" data-reveal>
-        <iframe class="frame" loading="lazy" title="High-Fidelity MUC"
-          src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2F2dkDkm6G4bdMBEZyhCyAI3%2FHigh-Fidelity-MUC"></iframe>
-        <div class="card-body">
-          <h3>High-Fidelity MUC</h3>
-          <div class="tag">High-Fidelity Mockup</div>
-          <a class="open" target="_blank" rel="noopener"
-             href="https://www.figma.com/design/2dkDkm6G4bdMBEZyhCyAI3/High-Fidelity-MUC">Open in Figma →</a>
-        </div>
-      </article>
-
-      <article class="card" data-reveal>
-        <iframe class="frame" loading="lazy" title="Design Explorations"
-          src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2F6GhZDBl8v3Fr37LaSRJjLN%2FCoba-Serba-Serbi"></iframe>
-        <div class="card-body">
-          <h3>Design Explorations</h3>
-          <div class="tag">Visual Exploration</div>
-          <a class="open" target="_blank" rel="noopener"
-             href="https://www.figma.com/design/6GhZDBl8v3Fr37LaSRJjLN/Coba-Serba-Serbi">Open in Figma →</a>
-        </div>
-      </article>
-
-      <article class="card" data-reveal>
-        <iframe class="frame" loading="lazy" title="Interactive Prototype"
-          src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2F4uDOpm1eYpnrS9DiDd4pw1%3Fnode-id%3D0-1"></iframe>
-        <div class="card-body">
-          <h3>Interactive Prototype</h3>
-          <div class="tag">Clickable Prototype</div>
-          <a class="open" target="_blank" rel="noopener"
-             href="https://www.figma.com/proto/4uDOpm1eYpnrS9DiDd4pw1?node-id=0-1">Open in Figma →</a>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- DEVELOPMENT -->
-  <section id="dev" class="wrap">
-    <div class="head" data-reveal>
-      <div class="eyebrow">Development</div>
-      <h2>Web projects</h2>
-      <p>Design is only half the story — I also ship working applications.</p>
-    </div>
-
-    <div class="dev" data-reveal>
-      <div>
-        <h3>Posko Jenggala</h3>
-        <p>Website for the Posko Jenggala humanitarian movement, built from scratch with Laravel —
-           including an admin panel and a database-driven content system.</p>
-        <div class="stack">
-          <span class="chip">Laravel 11</span>
-          <span class="chip">PHP 8.2</span>
-          <span class="chip">Blade</span>
-          <span class="chip">SQLite</span>
-        </div>
-        <!-- Replace # with the live URL once deployed -->
-        <a class="btn primary" style="margin-top:18px" href="#" target="_blank" rel="noopener">View live site →</a>
       </div>
-      <div class="dev-visual" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 9l2 2-2 2M12 13h4"/></svg>
-      </div>
+      <div style="position:absolute;top:24px;left:-14px;display:flex;align-items:center;gap:8px;background:color-mix(in srgb,var(--surface) 88%,transparent);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:10px;padding:8px 13px;font-size:12px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.22)"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent)"></span>UI/UX — Figma</div>
+      <div style="position:absolute;top:48%;right:-14px;display:flex;align-items:center;gap:8px;background:color-mix(in srgb,var(--surface) 88%,transparent);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:10px;padding:8px 13px;font-size:12px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.22)"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent)"></span>Web — Laravel</div>
     </div>
+  </div>
+</section>
 
-    <div class="dev" data-reveal>
-      <div>
-        <h3>SatuSehat FHIR Bridging Module</h3>
-        <p>Undergraduate thesis — a middleware that integrates hospital visit and diagnosis data
-           from a legacy SIMRS with SatuSehat, Indonesia's national health platform. Transforms
-           relational records into FHIR R4 resources (Patient, Encounter, Condition, Observation)
-           with OAuth 2.0 token management. All 12 test scenarios passed against the SatuSehat
-           sandbox, at under 600&nbsp;ms per resource.</p>
-        <div class="stack">
-          <span class="chip">Java</span>
-          <span class="chip">Spring Boot 3</span>
-          <span class="chip">REST API</span>
-          <span class="chip">HL7 FHIR R4</span>
-          <span class="chip">OAuth 2.0</span>
-        </div>
-        <a class="btn primary" style="margin-top:18px" href="assets/thesis-poster.png" target="_blank" rel="noopener">View thesis poster →</a>
-      </div>
-      <div class="dev-visual poster">
-        <img src="assets/thesis-poster.png" alt="Thesis poster: SatuSehat FHIR bridging module" loading="lazy" />
-      </div>
+<!-- CAPABILITIES -->
+<section id="capabilities" style="max-width:1080px;margin:0 auto;padding:78px 22px 0">
+  <div data-reveal style="margin-bottom:38px">
+    <div style="color:var(--accent);font-weight:700;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase">What I Do</div>
+    <h2 style="font-size:clamp(25px,3.8vw,36px);letter-spacing:-0.02em;margin:6px 0 0;font-weight:800">From idea to interface to implementation</h2>
+    <p style="color:var(--muted);margin:8px 0 0;max-width:620px">One person who can carry a product through design and into code.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px">
+    <div data-reveal style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px">
+      <div style="width:40px;height:40px;border-radius:10px;background:var(--surface-2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:14px"><svg viewBox="0 0 24 24" style="width:19px;height:19px;fill:none;stroke:var(--accent);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg></div>
+      <h3 style="font-size:16.5px;font-weight:700;margin:0 0 6px">UI/UX Design</h3>
+      <p style="font-size:14px;color:var(--muted);margin:0">Wireframes to high-fidelity mockups and clickable prototypes in Figma, grounded in Human–Computer Interaction principles.</p>
     </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="wrap">
-    <div class="contact-card" data-reveal>
-      <h2>Let's build something together</h2>
-      <p>I'm open to junior roles, internships, and freelance projects in UI/UX design
-         and web development. If my work fits what you need, I'd be glad to hear from you.</p>
-      <div class="contact-actions">
-        <a href="mailto:mfarhanfahrez0.1@gmail.com" class="btn primary">mfarhanfahrez0.1@gmail.com</a>
-        <a href="https://github.com/HutWare" target="_blank" rel="noopener" class="btn ghost">GitHub</a>
-      </div>
+    <div data-reveal style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px">
+      <div style="width:40px;height:40px;border-radius:10px;background:var(--surface-2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:14px"><svg viewBox="0 0 24 24" style="width:19px;height:19px;fill:none;stroke:var(--accent);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"></path></svg></div>
+      <h3 style="font-size:16.5px;font-weight:700;margin:0 0 6px">Front-End Development</h3>
+      <p style="font-size:14px;color:var(--muted);margin:0">Clean, responsive layouts with semantic HTML, modern CSS, and vanilla JavaScript — this site included.</p>
     </div>
-  </section>
+    <div data-reveal style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px">
+      <div style="width:40px;height:40px;border-radius:10px;background:var(--surface-2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:14px"><svg viewBox="0 0 24 24" style="width:19px;height:19px;fill:none;stroke:var(--accent);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg></div>
+      <h3 style="font-size:16.5px;font-weight:700;margin:0 0 6px">Back-End Development</h3>
+      <p style="font-size:14px;color:var(--muted);margin:0">Web applications and REST APIs with Laravel/PHP and Java Spring Boot — databases, integrations, and admin panels.</p>
+    </div>
+  </div>
+</section>
 
-  <footer>
-    <div class="wrap">© <span id="year"></span> M Farhan Fahrezi — Hand-built with HTML, CSS &amp; JavaScript. No frameworks.</div>
-  </footer>
+<!-- DESIGN -->
+<section id="design" style="max-width:1080px;margin:0 auto;padding:78px 22px 0">
+  <div data-reveal style="margin-bottom:38px">
+    <div style="color:var(--accent);font-weight:700;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase">Design Work</div>
+    <h2 style="font-size:clamp(25px,3.8vw,36px);letter-spacing:-0.02em;margin:6px 0 0;font-weight:800">Selected Figma projects</h2>
+    <p style="color:var(--muted);margin:8px 0 0;max-width:620px">UI/UX work from exploration to high-fidelity prototypes. Open any file in Figma for the full detail.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px">
+    <article class="card" data-reveal>
+      <iframe loading="lazy" title="Movix.com" src="https://www.figma.com/embed?embed_host=share&amp;url=https%3A%2F%2Fwww.figma.com%2Fdesign%2F4ZLQqCcBa24Rh4iu0sEtCS%2FMovix.com" style="aspect-ratio:4/3;background:var(--surface-2);border:0;width:100%;display:block"></iframe>
+      <div style="padding:18px 20px;display:flex;flex-direction:column;align-items:flex-start;gap:10px">
+        <h3 style="font-size:16.5px;font-weight:700;margin:0">Movix.com</h3>
+        <span style="font-size:12px;color:var(--muted);background:var(--surface-2);border:1px solid var(--border);padding:3px 10px;border-radius:999px">Software Engineering Coursework</span>
+        <a target="_blank" rel="noopener" href="https://www.figma.com/design/4ZLQqCcBa24Rh4iu0sEtCS/Movix.com" style="display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-weight:600;font-size:14px">Open in Figma →</a>
+      </div>
+    </article>
+    <article class="card" data-reveal>
+      <iframe loading="lazy" title="HCI Coursework" src="https://www.figma.com/embed?embed_host=share&amp;url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FbxjR4T6GtGJ36i15fWVWyV%2FTugas-IMK" style="aspect-ratio:4/3;background:var(--surface-2);border:0;width:100%;display:block"></iframe>
+      <div style="padding:18px 20px;display:flex;flex-direction:column;align-items:flex-start;gap:10px">
+        <h3 style="font-size:16.5px;font-weight:700;margin:0">HCI Coursework</h3>
+        <span style="font-size:12px;color:var(--muted);background:var(--surface-2);border:1px solid var(--border);padding:3px 10px;border-radius:999px">Human–Computer Interaction</span>
+        <a target="_blank" rel="noopener" href="https://www.figma.com/design/bxjR4T6GtGJ36i15fWVWyV/Tugas-IMK" style="display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-weight:600;font-size:14px">Open in Figma →</a>
+      </div>
+    </article>
+    <article class="card" data-reveal>
+      <iframe loading="lazy" title="High-Fidelity MUC" src="https://www.figma.com/embed?embed_host=share&amp;url=https%3A%2F%2Fwww.figma.com%2Fdesign%2F2dkDkm6G4bdMBEZyhCyAI3%2FHigh-Fidelity-MUC" style="aspect-ratio:4/3;background:var(--surface-2);border:0;width:100%;display:block"></iframe>
+      <div style="padding:18px 20px;display:flex;flex-direction:column;align-items:flex-start;gap:10px">
+        <h3 style="font-size:16.5px;font-weight:700;margin:0">High-Fidelity MUC</h3>
+        <span style="font-size:12px;color:var(--muted);background:var(--surface-2);border:1px solid var(--border);padding:3px 10px;border-radius:999px">High-Fidelity Mockup</span>
+        <a target="_blank" rel="noopener" href="https://www.figma.com/design/2dkDkm6G4bdMBEZyhCyAI3/High-Fidelity-MUC" style="display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-weight:600;font-size:14px">Open in Figma →</a>
+      </div>
+    </article>
+    <article class="card" data-reveal>
+      <iframe loading="lazy" title="Design Explorations" src="https://www.figma.com/embed?embed_host=share&amp;url=https%3A%2F%2Fwww.figma.com%2Fdesign%2F6GhZDBl8v3Fr37LaSRJjLN%2FCoba-Serba-Serbi" style="aspect-ratio:4/3;background:var(--surface-2);border:0;width:100%;display:block"></iframe>
+      <div style="padding:18px 20px;display:flex;flex-direction:column;align-items:flex-start;gap:10px">
+        <h3 style="font-size:16.5px;font-weight:700;margin:0">Design Explorations</h3>
+        <span style="font-size:12px;color:var(--muted);background:var(--surface-2);border:1px solid var(--border);padding:3px 10px;border-radius:999px">Visual Exploration</span>
+        <a target="_blank" rel="noopener" href="https://www.figma.com/design/6GhZDBl8v3Fr37LaSRJjLN/Coba-Serba-Serbi" style="display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-weight:600;font-size:14px">Open in Figma →</a>
+      </div>
+    </article>
+    <article class="card" data-reveal>
+      <iframe loading="lazy" title="Interactive Prototype" src="https://www.figma.com/embed?embed_host=share&amp;url=https%3A%2F%2Fwww.figma.com%2Fproto%2F4uDOpm1eYpnrS9DiDd4pw1%3Fnode-id%3D0-1" style="aspect-ratio:4/3;background:var(--surface-2);border:0;width:100%;display:block"></iframe>
+      <div style="padding:18px 20px;display:flex;flex-direction:column;align-items:flex-start;gap:10px">
+        <h3 style="font-size:16.5px;font-weight:700;margin:0">Interactive Prototype</h3>
+        <span style="font-size:12px;color:var(--muted);background:var(--surface-2);border:1px solid var(--border);padding:3px 10px;border-radius:999px">Clickable Prototype</span>
+        <a target="_blank" rel="noopener" href="https://www.figma.com/proto/4uDOpm1eYpnrS9DiDd4pw1?node-id=0-1" style="display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-weight:600;font-size:14px">Open in Figma →</a>
+      </div>
+    </article>
+  </div>
+</section>
 
-  <script>
-    // ----- Theme: saved choice > system preference; persists across visits -----
-    const root = document.documentElement;
-    const themeBtn = document.getElementById('themeBtn');
-    const themeIcon = document.getElementById('themeIcon');
-    const sunPath = 'M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10zM12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4';
-    const moonPath = 'M21 12.8A8.5 8.5 0 1 1 11.2 3 6.6 6.6 0 0 0 21 12.8Z';
+<!-- DEVELOPMENT -->
+<section id="dev" style="max-width:1080px;margin:0 auto;padding:78px 22px 0;display:flex;flex-direction:column;gap:22px">
+  <div data-reveal style="margin-bottom:16px">
+    <div style="color:var(--accent);font-weight:700;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase">Development</div>
+    <h2 style="font-size:clamp(25px,3.8vw,36px);letter-spacing:-0.02em;margin:6px 0 0;font-weight:800">Web projects</h2>
+    <p style="color:var(--muted);margin:8px 0 0;max-width:620px">Design is only half the story — I also ship working applications.</p>
+  </div>
 
-    function applyTheme(t){
-      root.setAttribute('data-theme', t);
-      themeIcon.innerHTML = '<path d="' + (t === 'light' ? moonPath : sunPath) + '"/>';
-    }
-    applyTheme(localStorage.getItem('theme') ||
-      (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'));
+  <div data-reveal style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:34px;display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:30px;align-items:center">
+    <div>
+      <h3 style="font-size:23px;font-weight:800;letter-spacing:-0.02em;margin:0 0 10px">Posko Jenggala</h3>
+      <p style="color:var(--muted);margin:0 0 16px;text-wrap:pretty">Website for the Posko Jenggala humanitarian movement, built from scratch with Laravel — including an admin panel and a database-driven content system.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <span style="font-size:13px;background:var(--surface-2);border:1px solid var(--border);padding:5px 12px;border-radius:8px">Laravel 11</span>
+        <span style="font-size:13px;background:var(--surface-2);border:1px solid var(--border);padding:5px 12px;border-radius:8px">PHP 8.2</span>
+        <span style="font-size:13px;background:var(--surface-2);border:1px solid var(--border);padding:5px 12px;border-radius:8px">Blade</span>
+        <span style="font-size:13px;background:var(--surface-2);border:1px solid var(--border);padding:5px 12px;border-radius:8px">SQLite</span>
+      </div>
+      <!-- Replace # with the live URL once deployed -->
+      <a href="#" target="_blank" rel="noopener" class="btn-p" style="margin-top:18px">View live site →</a>
+    </div>
+    <div style="background:#0b0e14;border:1px solid #1e2633;border-radius:12px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.3)">
+      <div style="display:flex;align-items:center;gap:8px;padding:11px 16px;border-bottom:1px solid #1e2633">
+        <span style="width:11px;height:11px;border-radius:50%;background:#ff5f57"></span>
+        <span style="width:11px;height:11px;border-radius:50%;background:#febc2e"></span>
+        <span style="width:11px;height:11px;border-radius:50%;background:#28c840"></span>
+        <span style="font:500 12px ui-monospace,Menlo,monospace;color:#5b6675;margin-left:8px">routes/web.php</span>
+      </div>
+      <pre style="margin:0;padding:20px 22px;font:13px/1.75 ui-monospace,Menlo,Consolas,monospace;color:#aab4c4;overflow-x:auto"><code><span style="color:#7aa2ff">Route</span>::get(<span style="color:#98c379">'/'</span>, [HomeController::class, <span style="color:#98c379">'index'</span>]);
+<span style="color:#7aa2ff">Route</span>::get(<span style="color:#98c379">'/aksi/{slug}'</span>, [AksiController::class, <span style="color:#98c379">'show'</span>]);
+<span style="color:#7aa2ff">Route</span>::post(<span style="color:#98c379">'/kontak'</span>, [HomeController::class, <span style="color:#98c379">'kontakPost'</span>]);
+<span style="color:#5b6675">// + admin panel &amp; database</span></code></pre>
+    </div>
+  </div>
 
-    themeBtn.addEventListener('click', () => {
-      const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-      localStorage.setItem('theme', next);
-      applyTheme(next);
+  <div data-reveal style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:34px;display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:30px;align-items:center">
+    <div>
+      <h3 style="font-size:23px;font-weight:800;letter-spacing:-0.02em;margin:0 0 10px">SatuSehat FHIR Bridging Module</h3>
+      <p style="color:var(--muted);margin:0 0 16px;text-wrap:pretty">Undergraduate thesis — a middleware that integrates hospital visit and diagnosis data from a legacy SIMRS with SatuSehat, Indonesia's national health platform. Transforms relational records into FHIR R4 resources (Patient, Encounter, Condition, Observation) with OAuth 2.0 token management. All 12 test scenarios passed against the SatuSehat sandbox, at under 600&nbsp;ms per resource.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <span style="font-size:13px;background:var(--surface-2);border:1px solid var(--border);padding:5px 12px;border-radius:8px">Java</span>
+        <span style="font-size:13px;background:var(--surface-2);border:1px solid var(--border);padding:5px 12px;border-radius:8px">Spring Boot 3</span>
+        <span style="font-size:13px;background:var(--surface-2);border:1px solid var(--border);padding:5px 12px;border-radius:8px">REST API</span>
+        <span style="font-size:13px;background:var(--surface-2);border:1px solid var(--border);padding:5px 12px;border-radius:8px">HL7 FHIR R4</span>
+        <span style="font-size:13px;background:var(--surface-2);border:1px solid var(--border);padding:5px 12px;border-radius:8px">OAuth 2.0</span>
+      </div>
+      <a href="assets/thesis-poster.png" target="_blank" rel="noopener" class="btn-p" style="margin-top:18px">View thesis poster →</a>
+    </div>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:12px;overflow:hidden;align-self:stretch;max-height:340px">
+      <img src="assets/thesis-poster.png" alt="Thesis poster: SatuSehat FHIR bridging module" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block">
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="max-width:1080px;margin:0 auto;padding:78px 22px">
+  <div data-reveal style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:52px 34px;text-align:center">
+    <h2 style="font-size:clamp(26px,4.4vw,38px);font-weight:800;letter-spacing:-0.02em;margin:0 0 12px">Let's build something together</h2>
+    <p style="color:var(--muted);max-width:520px;margin:0 auto 26px;text-wrap:pretty">I'm open to junior roles, internships, and freelance projects in UI/UX design and web development. If my work fits what you need, I'd be glad to hear from you.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a href="mailto:mfarhanfahrez0.1@gmail.com" class="btn-p">mfarhanfahrez0.1@gmail.com</a>
+      <button class="ctl" id="copyBtn" style="font-size:15px;padding:12px 22px;border-radius:11px">Copy email</button>
+      <a href="https://github.com/HutWare" target="_blank" rel="noopener" class="btn-g">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer style="border-top:1px solid var(--border)">
+  <div style="max-width:1080px;margin:0 auto;padding:28px 22px;text-align:center;color:var(--muted);font-size:14px">© <span id="year"></span> M Farhan Fahrezi — Hand-built with HTML, CSS &amp; JavaScript. No frameworks.</div>
+</footer>
+
+<script>
+  // ----- Theme: saved choice > system preference; persists across visits -----
+  const root = document.documentElement;
+  const themeBtn = document.getElementById('themeBtn');
+  function applyTheme(t){
+    root.setAttribute('data-theme', t);
+    themeBtn.textContent = t === 'dark' ? '◐ Light' : '◐ Dark';
+  }
+  let theme;
+  try { theme = localStorage.getItem('theme'); } catch (e) {}
+  applyTheme(theme || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'));
+  themeBtn.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    applyTheme(next);
+  });
+
+  // ----- Copy email with feedback -----
+  const copyBtn = document.getElementById('copyBtn');
+  let ct;
+  copyBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText('mfarhanfahrez0.1@gmail.com');
+    copyBtn.textContent = 'Copied!';
+    clearTimeout(ct);
+    ct = setTimeout(() => { copyBtn.textContent = 'Copy email'; }, 1600);
+  });
+
+  // ----- Scroll-reveal -----
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
     });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
 
-    // ----- Mobile menu -----
-    const menuBtn = document.getElementById('menuBtn');
-    const navLinks = document.getElementById('navLinks');
-    menuBtn.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('open');
-      menuBtn.setAttribute('aria-expanded', open);
-    });
-    navLinks.addEventListener('click', e => {
-      if (e.target.tagName === 'A') navLinks.classList.remove('open');
-    });
-
-    // ----- Scroll-reveal -----
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
-
-    // ----- Active nav link while scrolling -----
-    const sections = [...document.querySelectorAll('section[id]')];
-    const links = [...navLinks.querySelectorAll('a')];
-    const spy = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
-        }
-      });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-    sections.forEach(s => spy.observe(s));
-
-    // ----- Footer year -----
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  // ----- Footer year -----
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
